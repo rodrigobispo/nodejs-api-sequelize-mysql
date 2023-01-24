@@ -20,6 +20,22 @@ module.exports = {
       updatedAt: new Date()
     },
     {
+      nome: 'Marcos Sousa',
+      ativo: true,
+      email: 'marcos@marcossousa.com',
+      role: 'estudante',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      nome: 'Julio Lima',
+      ativo: true,
+      email: 'julio@julio.com',
+      role: 'estudante',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
       nome: 'Paula Moraes',
       ativo: true,
       email: 'paula@paula.com',
