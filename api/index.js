@@ -1,9 +1,8 @@
-import express from "express";
-import bodyParser from "body-parser";
+const express = require('express')
 
 const app = express()
 
-app.use(bodyParser.json())
+app.use(express.json())
 
 const port = 3000
 
@@ -11,6 +10,6 @@ app.get('/teste', (req, res) => {
     res.status(200).send({mensagem: "Boas-vindas a API."})
 })
 
-app.listen(port, () => console.log(`Servidor está aguardando na porta ${port}`))
+app.listen(port, () => console.log(`Servidor escutando na porta ${port}`))
 
-export default app
+module.exports = app

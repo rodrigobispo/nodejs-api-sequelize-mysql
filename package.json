@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Uma API para um sistema de controle de alunos e turmas de uma escola de inglês, usando o MySQL e o Sequelize como ORM.",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "nodemon ./api/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
