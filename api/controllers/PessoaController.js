@@ -80,6 +80,32 @@ class PessoaController {
             return res.status(500).json(error.message)
         }
     }
+
+    static async atualizaMatricula(req, res) {
+        const { estudanteId, matriculaId } = req.params
+        const novasInfosMatricula = req.body
+        try {
+            await database.Matriculas.update(novasInfosMatricula,
+                { where: {
+                        id: matriculaId,
+                        estudante_id: estudanteId
+                }})
+            return res.status(200).send('Atualização de Matrícula realizada com sucesso.')
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
+
+    static async excluiMatricula(req, res) {
+        const { estudanteId, matriculaId } = req.params
+        try {
+            await database.Matriculas.destroy({ where: { id: Number(matriculaId) } })
+            const estudante = await database.Pessoas.findOne({ where: { id: estudanteId } })
+            return res.status(200).send(`Matrícula ${matriculaId} do aluno(a) ${estudante.nome} removida com sucesso.`)
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
 }
 
 module.exports = PessoaController
