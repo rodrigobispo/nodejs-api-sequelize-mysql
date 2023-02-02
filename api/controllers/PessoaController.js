@@ -53,6 +53,32 @@ class PessoaController {
         }
     }
 
+    //exclusão física, 'hard delete'
+    static async excluiPessoaDefinitivo(req, res) {
+        const { id } = req.params
+        try {
+            await database.Pessoas.destroy({ where: { id: Number(id) }, force: true })
+            return res.status(200).send(`Pessoa de ID ${id} removida com sucesso. (definitivamente do banco)`)
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
+
+    //retorno de um soft delete, registro apagado logicamente (com deletedAt not null)
+    static async consultaRegistroApagado(req, res) {
+        try {
+            const id = req.params.id
+
+            let pessoa = await database.Pessoas.findOne({
+                paranoid: false,
+                where: { id: Number(id) }
+            })
+            return res.status(200).json(pessoa)
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
+
     static async restauraPessoa(req, res) {
         const { id } = req.params
         try {
