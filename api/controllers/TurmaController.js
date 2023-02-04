@@ -1,10 +1,14 @@
 const database = require('../models')
+const { Op } = require("sequelize")
 
 class TurmaController {
 
     static async buscaTodasAsTurmas(req, res) {
+        const { data_inicio, data_fim } = req.query
+        const where = {}
+        data_inicio && data_fim ? where.data_inicio = {[Op.between]: [data_inicio, data_fim]} : null
         try {
-            const todasAsTurmas = await database.Turmas.findAll()
+            const todasAsTurmas = await database.Turmas.findAll({ where })
             return res.status(200).json(todasAsTurmas)
         } catch (error) {
             return res.status(500).json(error.message);
