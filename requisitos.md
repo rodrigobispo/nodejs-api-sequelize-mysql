@@ -17,6 +17,8 @@
 5. **O cliente gostaria de poder consultar as turmas abertas por intervalo de data, para não receber informações desnecessárias (como turmas antigas).**
 -   *5.1 Solução: uso de Operador do Sequelize, Op.between, sendo possível usar [Op.gte] e [Op.lte]* 
 
-6. O cliente quer poder consultar as matrículas por turma e saber quais delas estão lotadas, para organizar melhor as matrículas.
+6. **O cliente quer poder consultar as matrículas por turma e saber quais delas estão lotadas, para organizar melhor as matrículas.**
+-   *6.1 Solução: uso de Sequelize.literal para especificar o funções sql, no caso o count, a partir da propriedade having*
 
-7. O cliente gostaria que, uma vez que o cadastro de um estudante fosse desativado, todas as matrículas relativas a este estudante automaticamente passassem a constar como “canceladas”.
+7. **O cliente gostaria que, uma vez que o cadastro de um estudante fosse desativado, todas as matrículas relativas a este estudante automaticamente passassem a constar como “canceladas”.**
+-   *7.1 Solução: uso de transaction do sequelize em operações sql update encadeadas no método cancelaPessoa.*
