@@ -1,6 +1,8 @@
 const database = require('../models')
 const { Op } = require("sequelize")
 
+const { TurmasServices } = require('../services')
+const turmasService = new TurmasServices()
 class TurmaController {
 
     static async buscaTodasAsTurmas(req, res) {
