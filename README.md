@@ -1,5 +1,15 @@
 # nodejs-api-sequelize-mysql
 Uma API para um sistema de controle de alunos e turmas de uma escola de inglês, usando o MySQL e o Sequelize como ORM.
+
+### Execução do projeto:
+
+Rodar o seguinte comando:
+
+```
+npm run dev
+```
+Este comando executa o script declarado no arquivo package.json
+
 ### Instalação de dependência(s) utilizadas:
 
 ```
